@@ -19,7 +19,7 @@ function getAverage(returnValues=false) {
     if (returnValues) {
         return [totalScore, totalWeight]
     }
-    document.getElementById("averageOutput").innerHTML = "Durchschnitt: " + totalScore/totalWeight;
+    document.getElementById("averageOutput").innerHTML = "Durchschnitt: " + roundToClosestHundreth(totalScore/totalWeight);
 }
 
 function roundToClosestHundreth(number) {
