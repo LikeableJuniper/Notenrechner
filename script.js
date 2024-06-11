@@ -19,17 +19,18 @@ function getAverage(returnValues=false) {
     if (returnValues) {
         return [totalScore, totalWeight]
     }
-    document.getElementById("averageOutput").innerHTML = "Durchschnitt: " + roundToClosestHundreth(totalScore/totalWeight);
+    document.getElementById("averageOutput").innerHTML = "Durchschnitt: " + roundToThousands(totalScore/totalWeight);
 }
 
-function roundToClosestHundreth(number) {
-    return Math.round(number*100)/100;
+function roundToThousands(number) {
+    return Math.round(number*1000)/1000;
 }
 
 function getNeeded() {
+    getAverage();
     let [totalScore, totalWeight] = getAverage(returnValues=true);
     let targetGrade = Number(document.getElementById("grade7").value);
     let nextWeight = Number(document.getElementById("weight7").value);
     let requiredGrade = (targetGrade * (totalWeight+nextWeight) - totalScore)/nextWeight;
-    document.getElementById("neededOutput").innerHTML = "Benötigte Note: " + roundToClosestHundreth(requiredGrade);
+    document.getElementById("neededOutput").innerHTML = "Benötigte Note: " + roundToThousands(requiredGrade);
 }
