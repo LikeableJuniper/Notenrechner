@@ -8,26 +8,26 @@
         <div class="averageCalculator">
             <h1>Durchschnittrechner</h1>
             <p>Note | Gewichtung</p>
-            <input type="number" id="grade1">
-            <input type="number" id="weight1" value="1"><br>
-            <input type="number" id="grade2">
-            <input type="number" id="weight2" value="1"><br>
-            <input type="number" id="grade3">
-            <input type="number" id="weight3" value="1"><br>
-            <input type="number" id="grade4">
-            <input type="number" id="weight4" value="1"><br>
-            <input type="number" id="grade5">
-            <input type="number" id="weight5" value="1"><br>
-            <input type="number" id="grade6">
-            <input type="number" id="weight6" value="1"><br>
+            <input type="number" step="0.1" id="grade1">
+            <input type="number" step="0.5" id="weight1" value="1"><br>
+            <input type="number" step="0.1" id="grade2">
+            <input type="number" step="0.5" id="weight2" value="1"><br>
+            <input type="number" step="0.1" id="grade3">
+            <input type="number" step="0.5" id="weight3" value="1"><br>
+            <input type="number" step="0.1" id="grade4">
+            <input type="number" step="0.5" id="weight4" value="1"><br>
+            <input type="number" step="0.1" id="grade5">
+            <input type="number" step="0.5" id="weight5" value="1"><br>
+            <input type="number" step="0.1" id="grade6">
+            <input type="number" step="0.5" id="weight6" value="1"><br>
             <button onclick="getAverage()">Durchschnitt berechnen</button>
             <h2 id="averageOutput">Durchschnitt: ?</h2>
         </div>
         <div class="neededCalculator">
             <h1>Welche Note benötige ich?</h1>
             <p>Erwünschter Schnitt | Gewichtung der nächsten Note</p>
-            <input type="number" id="grade7">
-            <input type="number" id="weight7" value="1"><br>
+            <input type="number" step="0.1" id="grade7">
+            <input type="number" step="0.5" id="weight7" value="1"><br>
             <button onClick="getNeeded()">Benötigte Note berechnen</button>
             <h2 id="neededOutput">Benötigte Note: ?</h2>
         </div>
