@@ -55,7 +55,7 @@ function getNeeded() {
     let targetGrade = Number(document.getElementById("neededGrade").value);
     let nextWeight = Number(document.getElementById("neededWeight").value);
     let requiredGrade = (targetGrade * (totalWeight+nextWeight) - totalScore)/nextWeight;
-    document.getElementById("neededOutput").innerText = "Benötigte Note: " + roundToThousands(requiredGrade);
+    document.getElementById("neededOutput").innerText = "Benötigte Note: " + customRound(requiredGrade, 1/1000);
 }
 
 function calculateCompensationPoints() {
