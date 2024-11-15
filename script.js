@@ -19,7 +19,7 @@ function getAverage(returnValues=false) {
     if (returnValues) {
         return [totalScore, totalWeight]
     }
-    document.getElementById("averageOutput").innerHTML = "Durchschnitt: " + customRound(totalScore/totalWeight, 1000);
+    document.getElementById("averageOutput").innerText = "Durchschnitt: " + customRound(totalScore/totalWeight, 1/1000);
 }
 
 function calculatePoints() {
@@ -29,7 +29,7 @@ function calculatePoints() {
         let grade = Number(document.getElementById("grade" + i).value);
         //weights are irrelevant for calculating points, as all final averages should have a weight of 1 towards the point score
         if (grade != 0) {
-            grades.push(customRound(grade, 2))
+            grades.push(customRound(grade, 0.5));
         }
     }
     for (let i = 0; i < 5; i++) {
@@ -38,15 +38,15 @@ function calculatePoints() {
         points += minimum;
         grades.splice(index, 1);
         if (grades.length == 0) {
-            break
+            break;
         }
     }
     let outputField = document.getElementById("pointsOutput");
-    outputField.innerHTML = "Punkte: " + points + "/19 (Gerundet auf halbe Noten)";
+    outputField.innerText = "Punkte: " + points + "/19 (Gerundet auf halbe Noten)";
 }
 
 function customRound(number, roundInterval) {
-    return Math.round(number*roundInterval)/roundInterval;
+    return Math.round(number/roundInterval)*roundInterval;
 }
 
 function getNeeded() {
@@ -55,5 +55,24 @@ function getNeeded() {
     let targetGrade = Number(document.getElementById("neededGrade").value);
     let nextWeight = Number(document.getElementById("neededWeight").value);
     let requiredGrade = (targetGrade * (totalWeight+nextWeight) - totalScore)/nextWeight;
-    document.getElementById("neededOutput").innerHTML = "Benötigte Note: " + roundToThousands(requiredGrade);
+    document.getElementById("neededOutput").innerText = "Benötigte Note: " + roundToThousands(requiredGrade);
+}
+
+function calculateCompensationPoints() {
+    let negativePoints = 0;
+    let compensationPoints = 0;
+    for (let i = 1; i <= 14; i++) {
+        let grade = Number(document.getElementById("grade" + i).value);
+        //weights are irrelevant for calculating points, as all final averages should have a weight of 1 towards the point score
+        if (grade != 0) {
+            grade = customRound(grade, 0.5)
+            if (grade < 4) {
+                negativePoints += 4 - grade;
+            }
+            else if (grade > 4) {
+                compensationPoints += grade - 4;
+            }
+        }
+    }
+    document.getElementById("compensationOutput").innerText = "Negative Punkte: " + negativePoints + " | Ausgleichspunkte: " + compensationPoints + " | Ausgeglichen: " + ["Nein", "Ja"][Number(compensationPoints >= 2*negativePoints)];
 }
