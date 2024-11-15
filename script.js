@@ -19,7 +19,7 @@ function getAverage(returnValues=false) {
     if (returnValues) {
         return [totalScore, totalWeight]
     }
-    document.getElementById("averageOutput").innerHTML = "Durchschnitt: " + roundToThousands(totalScore/totalWeight);
+    document.getElementById("averageOutput").innerHTML = "Durchschnitt: " + customRound(totalScore/totalWeight, 1000);
 }
 
 function calculatePoints() {
@@ -29,7 +29,7 @@ function calculatePoints() {
         let grade = Number(document.getElementById("grade" + i).value);
         //weights are irrelevant for calculating points, as all final averages should have a weight of 1 towards the point score
         if (grade != 0) {
-            grades.push(grade)
+            grades.push(customRound(grade, 2))
         }
     }
     for (let i = 0; i < 5; i++) {
@@ -42,11 +42,11 @@ function calculatePoints() {
         }
     }
     let outputField = document.getElementById("pointsOutput");
-    outputField.innerHTML = "Punkte: " + points + "/19";
+    outputField.innerHTML = "Punkte: " + points + "/19 (Gerundet auf halbe Noten)";
 }
 
-function roundToThousands(number) {
-    return Math.round(number*1000)/1000;
+function customRound(number, roundInterval) {
+    return Math.round(number*roundInterval)/roundInterval;
 }
 
 function getNeeded() {
