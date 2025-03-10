@@ -4,5 +4,11 @@
 
 .neededCalculator {
     position: absolute;
-    left: 500px;
+    left: 650px;
+}
+
+.pointCalculator {
+    position: absolute;
+    left: 650px;
+    bottom: 40px;
 }

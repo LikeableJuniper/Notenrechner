@@ -51,5 +51,19 @@
             <button onclick="getNeeded()">Benötigte Note berechnen</button>
             <h2 id="neededOutput">Benötigte Note: ?</h2>
         </div>
+        <div class="pointCalculator">
+            <h1>Welche Note habe ich mit welchen Punkten?</h1>
+            <p>Erreichte Punkte | Maximale Punkte (Punkte für 6)</p>
+            <input type="number" step="0.5" id="obtainedPoints">
+            <input type="number" step="0.5" id="maximalPoints"><br>
+            <button onClick="calculateObtainedGrade()">Note berechnen</button>
+            <h2 id="obtainedPointsOutput">Erreichte Note: ? | Punkte für 4: ?</h2>
+
+            <h1>Wieviele Punkte benötige ich für welche Note?</h1>
+            <p>Erwünschte Note</p>
+            <input type="number" step="0.05" id="desiredGrade"><br>
+            <button onClick="calculateNeededPoints()">Punkte berechnen</button>
+            <h2 id="desiredGradeOutput">Benötigte Punkte: ?</h2>
+        </div>
     </body>
 </html>

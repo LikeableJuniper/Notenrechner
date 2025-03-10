@@ -76,3 +76,23 @@ function calculateCompensationPoints() {
     }
     document.getElementById("compensationOutput").innerText = "Negative Punkte: " + negativePoints + " | Ausgleichspunkte: " + compensationPoints + " | Ausgeglichen: " + ["Nein", "Ja"][Number(compensationPoints >= 2*negativePoints)];
 }
+
+function calculateObtainedGrade() {
+    let maxPoints = document.getElementById("maximalPoints").value;
+    let obtainedPoints = document.getElementById("obtainedPoints").value;
+
+    let obtainedGrade = customRound(obtainedPoints/maxPoints * 5 + 1, 1/1000);
+    let pointsForFour = Number(customRound(maxPoints * 0.6, 1/10)).toFixed(1);
+    console.log(pointsForFour)
+
+    document.getElementById("obtainedPointsOutput").innerText = "Erreichte Note: " + obtainedGrade + " | Punkte für 4: " + pointsForFour;
+}
+
+function calculateNeededPoints() {
+    let maxPoints = document.getElementById("maximalPoints").value;
+    let desiredGrade = document.getElementById("desiredGrade").value;
+    
+    let neededPoints = customRound((desiredGrade-1)/5 * maxPoints, 1/1000);
+
+    document.getElementById("desiredGradeOutput").innerText = "Benötigte Punkte: " + neededPoints;
+}
